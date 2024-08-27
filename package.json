@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "firebase": "^10.12.5",
-    "react-native": "^0.74.5"
-  }
-}

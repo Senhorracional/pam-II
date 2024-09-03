@@ -1,11 +1,10 @@
 import React from "react";
-import {Button, Text, View, ScrollView, StyleSheet, Image} from "react-native";
-import { FlipInEasyX, RotateInDownRight } from "react-native-reanimated";
-
+import {Text, View, ScrollView, StyleSheet, Image} from "react-native";
+import { Link } from "expo-router";
   const styles = StyleSheet.create({
     image: {  
-      width: 680,
-      height: 478,
+      width: 210,
+      height: 320,
       resizeMode: 'stretch',
       flexDirection: 'row'
     },
@@ -16,12 +15,15 @@ import { FlipInEasyX, RotateInDownRight } from "react-native-reanimated";
   titulo: {
     fontWeight: 'bold',
     fontSize: 24,
-    marginTop: -150
+    marginTop: -320,
+    marginLeft: 10
   },
   images: {
-    marginTop: -100,
+    marginTop: -250,
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    gap: 20,
+    marginLeft: 10,
     
   }
   });
@@ -34,11 +36,16 @@ import { FlipInEasyX, RotateInDownRight } from "react-native-reanimated";
       </View>
         <View style={styles.images}>
           <View>
+            <Link>
             <Image 
-                style={styles.image}
+                style={
+                  styles.image
+                   }
                 source={{
                     uri: 'https://br.web.img3.acsta.net/medias/nmedia/18/90/95/96/20122166.jpg'
-                }}/>
+                }}
+                />
+            </Link>    
           </View>
           <View>
                  <Image 

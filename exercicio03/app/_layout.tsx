@@ -1,10 +1,9 @@
-import { Tabs } from "expo-router";
+import { Stack } from "expo-router";
 
 export default function RootLayout() {
   return (
-    <Tabs>
-      <Tabs.Screen name="meusFilmes" />
-      <Tabs.Screen name="proximos" />
-    </Tabs>
+    <Stack>
+      <Stack.Screen name="indice" />
+    </Stack>
   );
 }

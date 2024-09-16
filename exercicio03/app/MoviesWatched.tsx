@@ -3,38 +3,52 @@ import {Text, View, ScrollView, StyleSheet, Image} from "react-native";
 import { Link } from "expo-router";
   const styles = StyleSheet.create({
     image: {  
-      display: 'flex',
       width: 210,
       height: 320,
       resizeMode: 'stretch',
-      flexDirection: 'row'
+      flexDirection: 'column'
     },
     container: {
-      display: 'flex',
-      flexDirection: 'column',
-      flexWrap: 'wrap',
-      alignContent: 'center',
-      gap: 20
+      flex: 1,
+      justifyContent: 'center',
+      backgroundColor: '#DB4E44',
+      alignItems: 'center'
   },
   titulo: {
     fontWeight: 'bold',
     fontSize: 24,
-    marginTop: -320,
-    marginLeft: 10,
-    color: '#F5F1EB'
+    textAlign: 'center',
+    color: '#DB4E44'
   },
   images: {
-    
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 20,
+    marginTop: 15,
+    marginLeft: 10,
+    marginBottom: 10,
+    backgroundColor: '#F5F1EB',
+    padding: 10,
+  },
+  buttons:{
+    flexDirection: 'column',
+    gap: 20
+  },
+  button: {
+    backgroundColor: 'white',
+    paddingTop: 10,
+    paddingRight: 20,
+    paddingBottom: 10,
+    paddingLeft: 20,
+    borderRadius: 10,
+    marginBottom: 10
   }
   });
 
   const DisplayAnImageWithStyle = () => {
     return (
-    <ScrollView style={styles.container}>
-      <View>
-        <Text style={styles.titulo}>Filmes Assistidos:</Text>
-      </View>
-        <View style={styles.images}>
+    <View style={styles.container}>
+        <ScrollView style={styles.images}>
           <View>
             <Link href={"https://pt.wikipedia.org/wiki/Fight_Club"}>
             <Image 
@@ -111,16 +125,28 @@ import { Link } from "expo-router";
           </Link>
           </View>    
           <View>
-          <Link href={"https://pt.wikipedia.org/wiki/Deadpool_%26_Wolverine"}>
+          <Link href={"https://pt.wikipedia.org/wiki/Interstellar"}>
                  <Image 
                 style={styles.image}
                 source={{
-                    uri: 'https://osascoplaza.com.br/wp-content/uploads/2024/07/deadpol_wolverine.jpg'
+                    uri: 'https://images.squarespace-cdn.com/content/v1/58b866f417bffc4dc469acab/1600748704866-I46WK7H3IX9W985PBHXJ/critica+interestelar+Christopher+nolan'
                 }}/>
           </Link>
-          </View>    
-        </View> 
-    </ScrollView>    
+          </View>     
+        </ScrollView> 
+      <View style={styles.buttons}>
+        <Link href={"/NextMovies"}>
+          <View style={styles.button}>
+            <Text style={styles.titulo}>Próximos Filmes </Text>
+          </View>
+        </Link>
+        <Link href={"/indice"}>
+          <View style={styles.button}>
+            <Text style={styles.titulo}>  Voltar ao início </Text>
+          </View>
+        </Link>
+      </View>
+    </View>    
     );
 }
 export default DisplayAnImageWithStyle

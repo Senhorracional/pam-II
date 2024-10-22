@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View, TextInput, Button, Alert} from 'react-native';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import {doc, deleteDoc} from "firebase/firestore";
 
 // Configurações do Firebase (substitua pelos seus valores)
 const firebaseConfig = {
@@ -15,36 +16,24 @@ const firebaseConfig = {
 
 // Inicialize o Firebase antes de qualquer uso
 firebase.initializeApp(firebaseConfig);
+const nomesCollection = firebase
+    .firestore()
+    .collection('Nomes');
 
-const App = () => {
+export function App() {
+
     const [nome, setNome] = useState('');
     const [sobrenome, setSobrenome] = useState('');
 
-    const sendData = async () => {
-        const nomesCollection = firebase
-            .firestore()
-            .collection('Nomes');
+    const deletarDados = async (id) => {
         try {
-            await nomesCollection.add({Nome: nome, Sobrenome: sobrenome});
-            Alert.alert('Sucesso', 'Dados cadastrados com sucesso!');
-            setNome('');
-            setSobrenome('');
+          await deleteDoc(doc(nomesCollection, 'Nomes', documentId));  // Usando o ID gerado pelo Firestore
+          Alert.alert('Sucesso', 'O documento foi deletado com sucesso.');
         } catch (error) {
-            console.error(error);
-            Alert.alert('Erro', 'Ocorreu um erro ao cadastrar os dados.');
+          console.error(error);
+          Alert.alert('Erro', 'Ocorreu um erro ao deletar os dados.');
         }
-    };
-    const deleteData = 
-    return (
-        <View>
-            <TextInput placeholder="Nome" value={nome} onChangeText={setNome}/>
-            <TextInput
-                placeholder="Sobrenome"
-                value={sobrenome}
-                onChangeText={setSobrenome}/>
-            <Button title="Cadastrar" onPress={sendData}/>
-        </View>
-    );
-};
-
+      };
+      
+}
 export default App;
